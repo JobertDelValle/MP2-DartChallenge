@@ -1,122 +1,108 @@
+void main() {
+  // Creating song instances
+  Song track1 = Song('YASAP BOIS', 'RuiijiKun');
+  Song track2 = Song('Salabatkalabasaokra Gang n Nem', 'Downtown Q');
+  Song track3 = Song('2000s [ALL-STAR]', 'NO LIMIT 4L');
+  Song track4 = Song('Pag Kamiy Nasa Taas', 'Bugoy na Koykoy and Mike Swift');
+  Song track5 = Song('Sarili Ko', 'Bugoy na Koykoy');
 
-// Implementing the Song class
+  Song track6 = Song('Who Will Carry On', 'Natalie Cole');
+  Song track7 = Song('Im In Love Again', 'Phil Hurtt');
+  Song track8 = Song('Only Faith And Hope', 'JOB Orquestra');
+  Song track9 = Song('Ive Got To Find A Way', 'The Halleluiah Chorus');
+  Song track10 = Song('Stop, Look, Listen to Your Heart', 'The Howard Lemon Singers');
+
+  Song track11 = Song('Icee', 'Eli');
+  Song track12 = Song('BREAK FROM LAGUNA', 'Soulja444');
+  Song track13 = Song('bahala na (draft)', 'Rb Slatt');
+  Song track14 = Song('sugar (cover)', '25hearts');
+  Song track15 = Song('Downtown Baby (Bartender Remix)', 'Downtown Q');
+
+  // Creating playlist instances
+  Playlist playlist1 = Playlist('THE HARDWAY PLAYLIST');
+  Playlist playlist2 = Playlist('SOUL PLAYLIST');
+  Playlist playlist3 = Playlist('UNDERGROUND PLAYLIST');
+
+  // Adding songs to playlists
+  playlist1.addSong(track1);
+  playlist1.addSong(track2);
+  playlist1.addSong(track3);
+  playlist1.addSong(track4);
+  playlist1.addSong(track5);
+
+  playlist2.addSong(track6);
+  playlist2.addSong(track7);
+  playlist2.addSong(track8);
+  playlist2.addSong(track9);
+  playlist2.addSong(track10);
+
+  playlist3.addSong(track11);
+  playlist3.addSong(track12);
+  playlist3.addSong(track13);
+  playlist3.addSong(track14);
+  playlist3.addSong(track15);
+
+  // Creating a music festival and adding playlists to it
+  MusicFestival festival = MusicFestival('KESOINO BRAIN FESTIVAL');
+  festival.addStage(playlist1);
+  festival.addStage(playlist2);
+  festival.addStage(playlist3);
+
+  // Displaying details of the music festival
+  festival.displayFestivalDetails();
+}
+
+// Song class represents a single track with a title and artist.
 class Song {
-  // Properties to store the song's details
   String title;
   String artist;
-  int duration; // duration in seconds
 
-  // Constructor to initialize a Song object
-  Song(this.title, this.artist, this.duration);
+  Song(this.title, this.artist);
 
-  // Method to display song details
-  void displaySong() {
-    print('Song: $title by $artist, Duration: ${duration}s');
+  // Displays track details.
+  void displayDetails() {
+    print('$title by $artist');
   }
 }
 
-// Implementing the Playlist class
+// Playlist class represents a collection of tracks.
 class Playlist {
-  // Properties to store the playlist's details
   String name;
-  List<Song> songs;
+  List<Song> songs = [];
 
-  // Constructor to initialize a Playlist object
-  Playlist(this.name) : songs = [];
+  Playlist(this.name);
 
-  // Method to add a song to the playlist
+  // Adds a song to the playlist.
   void addSong(Song song) {
     songs.add(song);
   }
 
-  // Method to display all songs in the playlist
-  void displayPlaylist() {
+  // Displays all songs in the playlist.
+  void displaySongs() {
     print('Playlist: $name');
     for (var song in songs) {
-      song.displaySong();
-
+      song.displayDetails();
     }
   }
 }
 
-// Implementing the MusicFestival class
+// MusicFestival class represents a music festival with multiple playlists (stages).
 class MusicFestival {
-  // Properties to store the music festival's details
   String name;
-  List<Playlist> stages;
+  List<Playlist> stages = [];
 
-  // Constructor to initialize a MusicFestival object
-  MusicFestival(this.name) : stages = [];
+  MusicFestival(this.name);
 
-  // Method to add a playlist (stage) to the festival
-  void addStage(Playlist playlist) {
-    stages.add(playlist);
+  // Adds a playlist (stage) to the music festival.
+  void addStage(Playlist stage) {
+    stages.add(stage);
   }
 
-  // Method to display all stages and their songs
-  void displayFestival() {
+  // Displays all stages and their songs in the music festival.
+  void displayFestivalDetails() {
     print('Music Festival: $name');
-    print(''); // Add Space
     for (var stage in stages) {
-      stage.displayPlaylist();
-      print(''); // Add Space
-
+      stage.displaySongs();
     }
   }
-}
-
-void main() {
-  print('Welcome to the Music Festival Playlist Manager!');
-
-  // Creating songs
-  var song1 = Song('Foolish heart', 'Steve Perry', 210);
-  var song2 = Song('The last night we met', 'Lord Hulon', 180);
-  var song3 = Song('Bawat daan', 'Ebel dancel', 240);
-  var song4 = Song('Crush ', 'David Archuela', 200);
-  var song5 = Song('Jopay', 'Mayonnaise', 230);
-  var song6 = Song('Love is all that matters', 'Eric Carmen', 250);
-  var song7 = Song('18', 'One direction', 190);
-  var song8 = Song('Right now', 'One direction', 220);
-  var song9 = Song('About you', 'The 1975', 210);
-  var song10 = Song('Puzzel of my heart', 'WestLife', 185);
-  var song11 = Song('Through it al', 'Worship', 185);
-  var song12 = Song('Everytime', 'A1', 185);
-  var song13 = Song('Vercase on the floor', 'Bruno Mars', 185);
-  var song14 = Song('Mary on a cross', 'Ghost', 185);
-  var song15 = Song('My universe', 'Cold play', 185);
-
-  // Creating playlists (stages)
-  var stage1 = Playlist('Main Stage');
-  var stage2 = Playlist('Indie Stage');
-  var stage3 = Playlist('Electronic Stage');
-
-  // Adding songs to the playlists
-  stage1.addSong(song1);
-  stage1.addSong(song2);
-  stage1.addSong(song3);
-  stage1.addSong(song4);
-  stage1.addSong(song5);
-
-  stage2.addSong(song6);
-  stage2.addSong(song7);
-  stage2.addSong(song8);
-  stage2.addSong(song9);
-  stage2.addSong(song10);
-
-  stage3.addSong(song11);
-  stage3.addSong(song12);
-  stage3.addSong(song13);
-  stage3.addSong(song14);
-  stage3.addSong(song15);
-
-  // Creating the music festival
-  var festival = MusicFestival('Summer Fest');
-
-  // Adding playlists to the music festival
-  festival.addStage(stage1);
-  festival.addStage(stage2);
-  festival.addStage(stage3);
-
-  // Displaying the music festival details
-  festival.displayFestival();
 }
